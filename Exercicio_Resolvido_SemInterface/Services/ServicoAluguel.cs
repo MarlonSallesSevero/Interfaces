@@ -8,8 +8,8 @@ namespace Services
 
         public double PricePerHour { get; private set; }
         public double PricePerDay { get; private set; }
-        public BrazilTaxService _brazilTax { get; set; } = new BrazilTaxService(); 
-
+        public BrazilTaxService _brazilTax { get; set; } = new BrazilTaxService(); //Fortemente acoplado 
+                                                                                   //Dessa maneira a classe ServicoAluguel não esta 'fechada para alteração'     
         public ServicoAluguel(double pricePerHour, double pricePerDay)
         {
             PricePerHour = pricePerHour;
