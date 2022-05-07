@@ -9,7 +9,7 @@ namespace Services
         public double PricePerHour { get; private set; }
         public double PricePerDay { get; private set; }
         private ITaxServico _taxServ { get; set; }
-        public ServicoAluguel(double pricePerHour, double pricePerDay, ITaxServico taxServico) //Injeção de controle por meio de injeção de dependencia
+        public ServicoAluguel(double pricePerHour, double pricePerDay, ITaxServico taxServico) //Inversão de controle por meio de injeção de dependencia
         {
             PricePerHour = pricePerHour;
             PricePerDay = pricePerDay;
