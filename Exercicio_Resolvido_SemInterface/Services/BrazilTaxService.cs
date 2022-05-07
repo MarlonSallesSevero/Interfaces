@@ -1,8 +1,8 @@
 ﻿namespace Services
 {
-    internal class BrazilTaxService
+    internal class BrazilTaxService : ITaxServico
     {
-        public double tax(double amount) { 
+        public double Tax(double amount) { 
             if(amount <= 100)
             {
                 return amount * 0.2;

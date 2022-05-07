@@ -8,12 +8,12 @@ namespace Services
 
         public double PricePerHour { get; private set; }
         public double PricePerDay { get; private set; }
-        public BrazilTaxService _brazilTax { get; set; } = new BrazilTaxService(); //Fortemente acoplado 
-                                                                                   //Dessa maneira a classe ServicoAluguel não esta 'fechada para alteração'     
-        public ServicoAluguel(double pricePerHour, double pricePerDay)
+        private ITaxServico _taxServ { get; set; }
+        public ServicoAluguel(double pricePerHour, double pricePerDay, ITaxServico taxServico) //Injeção de controle por meio de injeção de dependencia
         {
             PricePerHour = pricePerHour;
             PricePerDay = pricePerDay;
+            _taxServ = taxServico;
         }
         public void ProcessPag(AluguelCarro aluguelCarro)
         {
@@ -30,7 +30,7 @@ namespace Services
                 basicPay = PricePerDay * Math.Ceiling(dur.TotalDays);
             }
 
-            double tx = _brazilTax.tax(basicPay);
+            double tx = _taxServ.Tax(basicPay);
 
             aluguelCarro.nota = new Nota(basicPay, tx);
 
