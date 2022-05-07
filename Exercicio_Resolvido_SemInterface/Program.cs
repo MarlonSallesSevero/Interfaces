@@ -21,7 +21,7 @@ namespace Main
             double hour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Enter price per day: ");
             double day = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            ServicoAluguel aluguelCarro = new ServicoAluguel(hour, day, new BrazilTaxService());
+            ServicoAluguel aluguelCarro = new ServicoAluguel(hour, day, new BrazilTaxService());//Injeção de dependencia & Inversão de Controle. *Upcasting
             aluguelCarro.ProcessPag(aluguel);
             Console.WriteLine("INVOICE:");
             Console.WriteLine(aluguel.nota);
